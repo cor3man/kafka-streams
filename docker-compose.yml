@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KAFKA_BROKER: kafka:9093
+    networks:
+      - kafka_network
+
+networks:
+  kafka_network:
+    external: true
